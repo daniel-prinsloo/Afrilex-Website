@@ -5,11 +5,25 @@ backend:
 media_folder: static/assets
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - label: News
+    name: news
+    folder: src/page/news
+    filter: {field: "Type", value: "news"}
     create: true
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
+        - { label: "Type", name: "type", widget: "select", options: ["news", "boardmembers"]}
+        - { name: path, label: Path }
+        - { name: date, label: Date, widget: date }
+        - { label: "Title", name: "title", widget: "string"}
+        - { label: "Content", name: "body", widget: "markdown"}
+  - label: Board Members
+    name: boardmembers
+    folder: src/page/boardmembers
+    filter: {field: "Type", value: "boardmembers"}
+    create: true
+    fields:
+        - { label: "Type", name: "type", widget: "select", options: ["news", "boardmembers"]}
+        - { name: path, label: Path }
+        - { name: date, label: Date, widget: date }
+        - { label: "Title", name: "title", widget: "string"}
+        - { label: "Content", name: "body", widget: "markdown"}
